@@ -1,0 +1,57 @@
+[root] {
+	[simulation] {
+		numthreads=1;		// can be overriden from CL
+		numphotons=100000;	// can be overriden from CL
+		numscatevents=20;	// can be overriden from CL (applies to grid only)
+		nummubins=10;
+		datadir=../data;
+		projectmode=0;		// 0: perspective, 1: orthographic (can be overriden from CL)
+		scattermode=0;		// 0: isotropic, 1: anisotropic (can be overriden from CL)
+		tracemode=0;		// 0: slab, 1: grid (can be overriden from CL)
+		enableverbosity=0;	// 0: (mostly) disable writing to stdout, 1: enable
+		enableunittests=0;
+	}
+
+	[image] {
+		// TODO: make image name configurable?
+		width=256;
+		height=256;
+	}
+
+	[observer] {
+		pos=0.0 0.0 45.0;	// in Cartesian space
+		the=0.0;			// unused
+		phi=0.0;			// unused
+	}
+
+	[dust] {
+		a=1.0;
+		g=0.101;
+		pl=0.58;
+		pc=0.1;
+		sc=1.0;
+	}
+
+	[slab] {
+		zmin=0.0;
+		zmax=1.0;
+		density=1.5;		// rho
+		opacity=2.5;		// kappa
+		numlevels=20;		// for the intensity moments (applies to slab only)
+	}
+
+	[grid] {
+		xres=20;
+		yres=20;
+		zres=20;
+		xsize=400.0;
+		ysize=100.0;
+		zsize=100.0;
+		density=0.2;		// rho (per-cell!)
+		opacity=0.1;		// kappa (per-cell!)
+
+		// TODO: allow specifying an external
+		// rho-kappa cell distribution file?
+		// ("gnuplot format", four colums)
+	}
+}
